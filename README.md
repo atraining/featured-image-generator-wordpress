@@ -2,6 +2,8 @@
 
 A powerful WordPress plugin for generating professional 1280×720 WebP featured images with customizable text, logos, and multiple design templates. **SEO-optimized and production-ready!**
 
+Read more: How to [generate good SEO-images](https://wise-relations.com/wordpress-plug-in-featured-images-automatisch-erstellen/)
+
 ## Installation
 
 [Download ZIP and upload as normal WordPress Plugin](https://github.com/atraining/featured-image-generator-wordpress/archive/refs/heads/main.zip)
