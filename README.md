@@ -2,7 +2,17 @@
 
 A powerful WordPress plugin for generating professional 1280×720 WebP featured images with customizable text, logos, and multiple design templates. **SEO-optimized and production-ready!**
 
+## Installation
+
+[Download ZIP and upload as normal WordPress Plugin](https://github.com/atraining/featured-image-generator-wordpress/archive/refs/heads/main.zip)
+
+[YouTube Tutorial](https://www.youtube.com/watch?v=n4zQWi2sEg0)
+
+## Look and feel after installation
+
 <img width="1728" height="1590" alt="HFAEEL5mXs" src="https://github.com/user-attachments/assets/06ccddb1-f40e-45af-9db5-bc2ead672691" />
+
+![msedge_FjJXfe8IgD](https://github.com/user-attachments/assets/2e9dea46-f35b-4e91-867e-ab61233acd26)
 
 
 ## Features
