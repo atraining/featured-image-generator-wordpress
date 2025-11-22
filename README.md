@@ -1,4 +1,4 @@
-# Banner Generator WordPress Plugin | ZERO AI
+# SEO optimized Image Generator WordPress Plugin | ZERO AI
 
 A powerful WordPress plugin for generating professional 1280×720 WebP featured images with customizable text, logos, and multiple design templates. **SEO-optimized and production-ready!**
 
