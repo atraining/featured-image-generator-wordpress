@@ -15,6 +15,15 @@ if (!defined('ABSPATH')) {
                 <table class="form-table">
                     <tr>
                         <th scope="row">
+                            <label for="category">Label</label>
+                        </th>
+                        <td>
+                            <input type="text" id="category" name="category" class="regular-text" placeholder="e.g., Intelligent Document Processing">
+                            <p class="description">Small text displayed above the headline (optional)</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
                             <label for="title">Title *</label>
                         </th>
                         <td>
@@ -33,15 +42,6 @@ if (!defined('ABSPATH')) {
                     </tr>
                     <tr>
                         <th scope="row">
-                            <label for="category">Category</label>
-                        </th>
-                        <td>
-                            <input type="text" id="category" name="category" class="regular-text" placeholder="e.g., Intelligent Document Processing">
-                            <p class="description">Optional category label</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
                             <label for="description">Tagline</label>
                         </th>
                         <td>
@@ -51,16 +51,16 @@ if (!defined('ABSPATH')) {
                     </tr>
                     <tr>
                         <th scope="row">
-                            <label for="logo_url">Logo URL (optional)</label>
+                            <label for="logo_url">Overlay Image URL (optional)</label>
                         </th>
                         <td>
-                            <input type="url" id="logo_url" name="logo_url" class="regular-text" placeholder="https://example.com/logo.png">
-                            <p class="description">Direct URL to your logo image (will be displayed on the right side)</p>
+                            <input type="url" id="logo_url" name="logo_url" class="regular-text" placeholder="https://example.com/image.png">
+                            <p class="description">Direct URL to an image (logo, icon, etc.) that will be displayed on the banner</p>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <label for="style">Banner Style</label>
+                            <label for="style">Image Style</label>
                         </th>
                         <td>
                             <select id="style" name="style">
@@ -213,7 +213,6 @@ if (!defined('ABSPATH')) {
 
 .banner-form-section,
 .banner-preview-section,
-.banner-stats-section,
 .api-docs-section {
     background: white;
     padding: 20px;
@@ -235,41 +234,6 @@ if (!defined('ABSPATH')) {
 
 .banner-actions .button {
     margin: 0 5px;
-}
-
-.banner-stats-summary {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
-.stat-box {
-    background: #f9f9f9;
-    padding: 20px;
-    border-radius: 4px;
-    text-align: center;
-    flex: 1;
-}
-
-.stat-box h3 {
-    margin: 0 0 10px 0;
-    color: #666;
-    font-size: 14px;
-}
-
-.stat-box span {
-    font-size: 24px;
-    font-weight: bold;
-    color: #0073aa;
-}
-
-.code-example {
-    background: #f1f1f1;
-    padding: 15px;
-    border-radius: 4px;
-    margin: 15px 0;
-    font-family: monospace;
-    white-space: pre-line;
 }
 
 .spinner {

@@ -1,6 +1,8 @@
-# SEO optimized Image Generator WordPress Plugin | ZERO AI
+# SEO Image Generator WordPress Plugin | ZERO AI
 
 A powerful WordPress plugin for generating professional 1280×720 WebP featured images with customizable text, logos, and multiple design templates. **SEO-optimized and production-ready!**
+
+**✨ NEW in v3.0.0: Gutenberg Block Support!** Generate banners directly in the post editor while writing your content.
 
 Read more: How to [generate good SEO-images](https://wise-relations.com/wordpress-plug-in-featured-images-automatisch-erstellen/)
 
@@ -19,15 +21,17 @@ Read more: How to [generate good SEO-images](https://wise-relations.com/wordpres
 
 ## Features
 
+- **🆕 Gutenberg Block**: "SEO Image" block - generate and customize images directly in the block editor while writing posts
 - **4 Professional Templates**: Modern Tech, Corporate Professional, Clean Minimal, and Editorial Document styles
 - **Client-Side Image Generation**: Uses html2canvas to generate high-quality WebP images (~50-80KB)
 - **SEO-Optimized**: Descriptive filenames, proper alt text, and optimized file sizes for fast loading
-- **Flexible Customization**: Custom titles, categories, descriptions, logos, patterns, and 9 font options
+- **Flexible Customization**: Custom titles, labels, descriptions, overlay images, patterns, and 9 font options
 - **Media Library Integration**: Automatically saves generated banners to WordPress media library
 - **Smart Layout**: Content area expands when no logo is present
 - **Pattern Library**: 8 background patterns (grid, dots, diagonal, zigzag, circuit, hexagon, waves, none)
 - **Glass Morphism Effects**: Modern semi-transparent content boxes with backdrop blur
 - **No Server Dependencies**: Works on any hosting without GD library or ImageMagick
+- **Two Workflows**: Use the admin page OR the Gutenberg block - whichever fits your workflow
 
 ## Example Banners
 
@@ -55,20 +59,54 @@ Read more: How to [generate good SEO-images](https://wise-relations.com/wordpres
 
 ## Usage
 
-### Admin Interface
+### Two Ways to Use
+
+The plugin offers **two workflows** to fit your preferences:
+
+#### Option 1: Gutenberg Block (NEW in v3.0.0) 🆕
+
+**Perfect for:** Generating images while writing posts, inline content creation
+
+1. Open a post or page in the block editor
+2. Add the **SEO Image** block (found in the Media category)
+3. Configure settings in the **right sidebar**:
+   - **Image Content**: Label (optional), Title (required), Keyword (required), Description
+   - **Overlay Image**: Upload or select from Media Library
+   - **Design Style**: Choose image style, pattern, and font
+4. Click **"Generate Preview"** to see the image
+5. Review the preview and click **"Regenerate"** to try different settings if needed
+6. When satisfied, click **"Save to Media Library & Insert"**
+7. Image is saved to Media Library and embedded in your post
+
+**Benefits:**
+- ✅ Generate images without leaving the post editor
+- ✅ See image in context with your content
+- ✅ Preview before saving - regenerate as many times as needed
+- ✅ Streamlined workflow for content creators
+
+#### Option 2: Admin Page Interface
+
+**Perfect for:** Batch generation, reusable banners, team workflows
 
 1. Go to **Banner Generator** in your WordPress admin menu
 2. Fill in the fields:
+   - **Label** (optional): Small text displayed above the headline
    - **Title** (required): Main headline text
-   - **Category** (optional): Subtitle/category label
-   - **Description** (optional): Supporting text with corner bracket decoration
-   - **Logo URL** (optional): URL to logo image (WordPress media library or external)
-   - **Style**: Choose from 4 templates (Tech, Corporate, Minimal, Document)
-   - **Pattern**: Select background pattern (8 options + none)
-   - **Font Family**: Choose from 9 fonts including monospace options
+   - **Keyword** (required): SEO-friendly filename base
+   - **Tagline** (optional): Supporting text below the title
+   - **Overlay Image URL** (optional): URL to an image (logo, icon, etc.)
+   - **Image Style**: Choose from 4 templates (Tech, Corporate, Minimal, Document)
+   - **Background Pattern**: Select background pattern (8 options + none)
+   - **Font**: Choose from 9 fonts including monospace options
 3. Click "Generate Banner" to preview
 4. Click "Save to Media Library" to save as WebP file
-5. View saved banner in WordPress Media Library
+5. View saved image in WordPress Media Library
+
+**Benefits:**
+- ✅ Dedicated interface for banner creation
+- ✅ Better for creating multiple banners in one session
+- ✅ Easy to share workflow with team members
+- ✅ Familiar admin page experience
 
 ## SEO Features & Specialties
 
@@ -108,8 +146,9 @@ Each banner includes:
   - Open Graph images
 
 ### Customization for Keyword Optimization
+- **Label field**: Add niche/industry terms (appears above title)
 - **Title field**: Include target keywords in main headline
-- **Category field**: Add niche/industry terms
+- **Keyword field**: Determines SEO-friendly filename
 - **Description field**: Supporting text with secondary keywords
 - Multiple font options to match brand identity
 
@@ -200,6 +239,11 @@ Modern frosted glass effect on content boxes:
 ```
 banner-generator/
 ├── banner-generator.php          # Main plugin file
+├── blocks/
+│   └── banner-generator/        # Gutenberg block (NEW in v3.0.0)
+│       ├── edit.js              # Block editor component
+│       ├── editor.css           # Editor-only styles
+│       └── style.css            # Frontend styles
 ├── templates/
 │   ├── admin-page.php           # Admin interface
 │   ├── banner-tech.php          # Modern Tech template
@@ -217,7 +261,8 @@ banner-generator/
 │   ├── banner-minimal-example.png
 │   ├── banner-document-example.png
 │   └── admin-interface.png
-└── README.md                    # This file
+├── README.md                    # This file
+└── CHANGELOG.md                 # Version history
 ```
 
 ## Customization
@@ -270,7 +315,7 @@ Higher values = larger files, higher quality
 
 ### Common Issues
 
-**Logo not loading:**
+**Overlay image not loading:**
 - Check image URL is accessible
 - Verify CORS headers if external image
 - Use WordPress media library images (same-origin) for best results
@@ -285,10 +330,10 @@ Higher values = larger files, higher quality
 - Try different pattern options
 - Increase pattern opacity in template CSS
 
-**Text overlapping with logo:**
-- Logo is now behind text (z-index: 1)
+**Text overlapping with overlay image:**
+- Overlay image is positioned behind text (z-index: 1)
 - Content box has semi-transparent background for contrast
-- Adjust logo size or position in template CSS
+- Adjust image size or position in template CSS
 
 **Fonts not loading:**
 - Wait for generation to complete (3 second delay for fonts)
@@ -343,10 +388,10 @@ Check `/wp-content/debug.log` for errors.
 
 ### For SEO
 1. **Use descriptive titles** with target keywords
-2. **Keep filenames meaningful** (auto-generated from title)
-3. **Add relevant category/description** text
+2. **Keep filenames meaningful** (auto-generated from keyword field)
+3. **Add relevant label/description** text
 4. **Optimize file size** (~50-80KB is ideal)
-5. **Use consistent branding** (logo, colors, fonts)
+5. **Use consistent branding** (overlay images, colors, fonts)
 
 ### For Performance
 1. **Use WebP format** (already default)
@@ -356,14 +401,26 @@ Check `/wp-content/debug.log` for errors.
 
 ### For Design
 1. **Keep text concise** (long titles may overflow)
-2. **Test without logo** (layout adjusts automatically)
-3. **Choose appropriate template** for content tone
+2. **Test without overlay image** (layout adjusts automatically)
+3. **Choose appropriate image style** for content tone
 4. **Try different patterns** for variety
 5. **Use monospace fonts** for tech/code content
 
 ## Changelog
 
-### Version 2.0.0 (Current)
+### Version 3.0.0 (Current)
+- 🆕 **Gutenberg Block Support**: "SEO Image" block for in-editor image generation
+- 🆕 **Preview Workflow**: Generate preview → adjust settings → save when satisfied
+- 🆕 **Block Inspector Controls**: Full parameter control in the editor sidebar
+- 🆕 **Better UX**: Clear field labels (Label, Overlay Image, Image Style)
+- 🆕 **Visual Hierarchy**: Form field order matches image layout
+- ✨ **Two Workflows**: Choose between admin page or Gutenberg block
+- 📦 **Media Library Integration**: Preview first, save to library when ready
+- 🎨 **Same Design Templates**: All 4 templates available in both interfaces
+- 📝 **Improved Labels**: "Label" instead of "Category", "Overlay Image" instead of "Logo"
+- 🔧 **WordPress Standards**: Uses wp-block-image classes for better theme compatibility
+
+### Version 2.0.0
 - ✨ Added 4 professional templates (Tech, Corporate, Minimal, Document)
 - ✨ Template-based architecture for easy customization
 - ✨ Smart layout: content expands when no logo present

@@ -1,0 +1,98 @@
+/**
+ * Banner Generator Block - Editor Styles
+ * Version: 3.0.0
+ *
+ * Styles that only apply in the block editor
+ */
+
+.banner-generator-block-editor {
+    margin: 20px 0;
+}
+
+.banner-generator-block-editor .components-placeholder {
+    min-height: 200px;
+    padding: 20px;
+}
+
+.banner-generator-block-editor .components-placeholder__label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.banner-generator-block-editor .components-placeholder__instructions {
+    margin-bottom: 16px;
+    color: #757575;
+}
+
+.banner-generator-preview {
+    position: relative;
+}
+
+.banner-generator-preview img {
+    border: 1px solid #ddd;
+}
+
+/* Inspector Controls Styling */
+.components-panel__body .banner-generator-logo-preview {
+    margin-bottom: 12px;
+}
+
+.components-panel__body .banner-generator-logo-preview img {
+    max-width: 100%;
+    max-height: 150px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+}
+
+/* Error message styling */
+.banner-generator-error {
+    color: #d63638;
+    margin-bottom: 12px;
+    padding: 8px 12px;
+    background-color: #fcf0f1;
+    border: 1px solid #f0b8b8;
+    border-radius: 2px;
+    font-size: 13px;
+}
+
+/* Loading state */
+.banner-generator-loading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    background-color: #f0f0f1;
+    border-radius: 2px;
+}
+
+/* Settings info box */
+.banner-generator-settings-info {
+    margin-top: 12px;
+    padding: 12px;
+    background-color: #f0f0f1;
+    border-radius: 2px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.banner-generator-settings-info strong {
+    color: #1e1e1e;
+}
+
+/* Media upload button spacing */
+.components-panel__body .banner-generator-logo-controls {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 782px) {
+    .banner-generator-block-editor .components-placeholder {
+        padding: 16px;
+    }
+
+    .banner-generator-settings-info {
+        font-size: 12px;
+    }
+}

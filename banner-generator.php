@@ -1,10 +1,11 @@
 <?php
 /**
  * Plugin Name: Banner Generator
- * Description: Generate professional banners with HTML/CSS and html2canvas (client-side)
- * Version: 2.0.0
+ * Description: Generate professional banners with HTML/CSS and html2canvas (client-side). Now with Gutenberg block support!
+ * Version: 3.0.0
  * Author: Christopher Helm
  * License: GPL v2 or later
+ * Text Domain: banner-generator
  */
 
 // Prevent direct access
@@ -19,6 +20,10 @@ class BannerGenerator {
         add_action('wp_ajax_generate_banner', array($this, 'generate_banner_ajax'));
         add_action('wp_ajax_get_banner_html', array($this, 'get_banner_html_ajax'));
         add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_scripts'));
+
+        // Gutenberg block support
+        add_action('init', array($this, 'register_block'));
+        add_action('enqueue_block_editor_assets', array($this, 'enqueue_block_editor_assets'));
     }
 
     public function add_admin_menu() {
@@ -184,6 +189,126 @@ class BannerGenerator {
     public function admin_page() {
         include plugin_dir_path(__FILE__) . 'templates/admin-page.php';
     }
+
+    /**
+     * Register the Gutenberg block
+     */
+    public function register_block() {
+        if (!function_exists('register_block_type')) {
+            return;
+        }
+
+        // Register the block without scripts - they'll be enqueued separately
+        register_block_type('banner-generator/banner-block', array(
+            'api_version' => 2,
+            'attributes' => array(
+                'attachmentId' => array(
+                    'type' => 'number',
+                    'default' => 0
+                ),
+                'imageUrl' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
+                'previewUrl' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
+                'title' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
+                'keyword' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
+                'category' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
+                'description' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
+                'logoUrl' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
+                'logoId' => array(
+                    'type' => 'number',
+                    'default' => 0
+                ),
+                'style' => array(
+                    'type' => 'string',
+                    'default' => 'tech'
+                ),
+                'pattern' => array(
+                    'type' => 'string',
+                    'default' => 'none'
+                ),
+                'fontFamily' => array(
+                    'type' => 'string',
+                    'default' => 'Inter'
+                ),
+                'altText' => array(
+                    'type' => 'string',
+                    'default' => ''
+                )
+            ),
+            'supports' => array(
+                'html' => false,
+                'multiple' => true,
+                'reusable' => true,
+                'inserter' => true
+            )
+        ));
+    }
+
+    /**
+     * Enqueue block editor assets
+     */
+    public function enqueue_block_editor_assets() {
+        // Enqueue html2canvas first
+        wp_enqueue_script(
+            'html2canvas',
+            'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js',
+            array(),
+            '1.4.1',
+            true
+        );
+
+        // Enqueue block editor script
+        wp_enqueue_script(
+            'banner-generator-block-editor',
+            plugin_dir_url(__FILE__) . 'blocks/banner-generator/edit.js',
+            array('wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-i18n', 'wp-block-editor', 'wp-data', 'html2canvas'),
+            '3.0.0',
+            true
+        );
+
+        // Enqueue editor styles
+        wp_enqueue_style(
+            'banner-generator-block-editor-style',
+            plugin_dir_url(__FILE__) . 'blocks/banner-generator/editor.css',
+            array(),
+            '3.0.0'
+        );
+
+        // Enqueue frontend styles (for preview in editor)
+        wp_enqueue_style(
+            'banner-generator-block-style',
+            plugin_dir_url(__FILE__) . 'blocks/banner-generator/style.css',
+            array(),
+            '3.0.0'
+        );
+
+        // Localize script with AJAX data
+        wp_localize_script('banner-generator-block-editor', 'bannerGeneratorBlock', array(
+            'ajaxurl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('banner_generator_nonce')
+        ));
+    }
+
 }
 
 // Initialize the plugin

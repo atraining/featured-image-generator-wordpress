@@ -1,0 +1,21 @@
+# IDE
+.idea/
+.claude/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build
+*.map
+
+# Temporary files
+*.tmp
+*.temp
+*~
