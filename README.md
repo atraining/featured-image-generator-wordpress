@@ -10,7 +10,7 @@ Read more: How to [generate good SEO-images](https://wise-relations.com/wordpres
 
 [Download ZIP and upload as normal WordPress Plugin](https://github.com/atraining/featured-image-generator-wordpress/archive/refs/heads/main.zip)
 
-[YouTube Tutorial](https://www.youtube.com/watch?v=n4zQWi2sEg0)
+[YouTube Tutorial]([https://www.youtube.com/watch?v=n4zQWi2sEg0](https://www.youtube.com/watch?v=qpX2W1FNhak))
 
 ## Look and feel after installation
 
