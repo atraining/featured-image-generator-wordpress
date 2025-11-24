@@ -10,7 +10,11 @@ Read more: How to [generate good SEO-images](https://wise-relations.com/wordpres
 
 [Download ZIP and upload as normal WordPress Plugin](https://github.com/atraining/featured-image-generator-wordpress/archive/refs/heads/main.zip)
 
+## YouTube Tutorial
+
 [SEO Images Wodrepss Plugin - Generate Images while wrting a blog post](https://www.youtube.com/watch?v=qpX2W1FNhak)
+
+<a href="https://www.youtube.com/watch?v=qpX2W1FNhak"><img width="1213" height="781" alt="msedge_htuIc7eEui" src="https://github.com/user-attachments/assets/743608ab-30f6-4a98-a278-95820bf22821" /></a>
 
 ## Look and feel after installation
 
